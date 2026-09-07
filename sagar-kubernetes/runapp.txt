@@ -1,0 +1,4 @@
+
+kubectl port-forward \-n nginx \svc/notes-app-service \8000:8000 \--address=0.0.0.0
+
+kubectl exec -it -n nginx mysql-bc58899b7-7bqd4 -- mysql -u root -p

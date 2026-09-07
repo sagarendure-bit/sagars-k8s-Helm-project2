@@ -1,0 +1,48 @@
+@Library('sagar-shared-jenkins') _
+
+pipeline {
+
+    agent {
+        label 'sagar'
+    }
+
+    stages {
+
+        stage('Code') {
+            steps {
+                checkoutCode(
+                    'https://github.com/sagarendure-bit/sagar-jenkins.git',
+                    'main'
+                )
+            }
+        }
+
+        stage('Build') {
+            steps {
+                buildDockerImage('notes-app')
+            }
+        }
+
+        stage('Test') {
+            steps {
+                testApp()
+            }
+        }
+
+        stage('Push to DockerHub') {
+            steps {
+                pushDockerImage(
+                    'dockerHubCred',
+                    'notes-app',
+                    'sagarendure/notes-app'
+                )
+            }
+        }
+
+        stage('Deploy on ec2') {
+            steps {
+                deployApp()
+            }
+        }
+    }
+}

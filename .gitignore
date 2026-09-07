@@ -1,0 +1,91 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+static/
+
+# React / Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+build/
+.next/
+out/
+.vercel
+package-lock.json
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Kubernetes sensitive files
+*.kubeconfig
+*.pem
+*.key
+*.crt
+*.csr
+*.p12
+kubeconfig
+secrets.yml
+*-secret.yml
+kind-cluster/config.yml
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Git
+*.orig
+
+# Docker
+docker-compose.override.yml
+
+# Secrets and sensitive data
+**/secrets.yml
+**/mysql-secret.yml
+*.secret.yml
+
+# Python cache files
+**/__pycache__/
+**/*.pyc
+
+# Static files
+**/staticfiles/
+**/mynotes/build/
+**/mynotes/static/

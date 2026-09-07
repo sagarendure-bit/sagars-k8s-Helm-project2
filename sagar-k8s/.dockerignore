@@ -1,0 +1,11 @@
+data/
+.git/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+data/
+.git/
+.gitignore
+README.md

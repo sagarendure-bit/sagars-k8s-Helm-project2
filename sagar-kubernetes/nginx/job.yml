@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+
+metadata:
+  name: demo-job
+  namespace: nginx
+
+spec:
+  completions: 1
+  parallelism: 1
+
+  template:
+    metadata:
+      name: demo-job-pod
+      labels:
+        app: batch-task
+
+    spec:
+      restartPolicy: Never
+
+      containers:
+        - name: batch-container
+          image: busybox
+          command: ["sh", "-c", "echo Hello from Job! && sleep 10"]
+          restartPolicy: Never
