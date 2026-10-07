@@ -1,0 +1,33 @@
+{{- if .Values.migrationJob.enabled }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "myapp.fullname" . }}-migrate-{{ .Release.Revision }}
+  labels:
+    {{- include "myapp.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": pre-install,pre-upgrade
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+spec:
+  backoffLimit: {{ .Values.migrationJob.backoffLimit }}
+  ttlSecondsAfterFinished: {{ .Values.migrationJob.ttlSecondsAfterFinished }}
+  template:
+    metadata:
+      labels:
+        {{- include "myapp.selectorLabels" . | nindent 8 }}
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: migrate
+          image: {{ .Values.migrationJob.image | quote }}
+          command:
+            - sh
+            - -c
+            - |
+              echo "Running pre-upgrade migration for release {{ .Release.Name }}"
+              echo "App version: {{ .Chart.AppVersion }}"
+              echo "Environment: {{ .Values.config.APP_ENV }}"
+              sleep 3
+              echo "Migration complete."
+{{- end }}

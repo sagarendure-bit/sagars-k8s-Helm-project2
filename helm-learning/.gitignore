@@ -1,0 +1,23 @@
+# Helm generated artifacts
+*.tgz
+dist/
+myapp/charts/*.tgz
+
+# Backups and temp
+*.bak
+*.swp
+*.tmp
+*~
+
+# Logs
+*.log
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Secrets
+.env
+.env.*
+secrets.yaml

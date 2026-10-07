@@ -1,0 +1,20 @@
+releases:
+  - name: postgres
+    namespace: helm-lab
+    chart: bitnami/postgresql
+    version: 12.12.10
+    values:
+      - postgresql:
+          auth:
+            postgresPassword: labpass123
+            password: labpass123
+            username: myapp
+            database: myapp
+
+  - name: myapp
+    namespace: helm-lab
+    chart: ./myapp
+    needs:
+      - helm-lab/postgres
+    values:
+      - ./myapp/values-dev.yaml

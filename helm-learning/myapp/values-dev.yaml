@@ -1,0 +1,19 @@
+global:
+  security:
+    allowInsecureImages: true
+
+postgresql:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/postgresql
+    tag: 15.4.0-debian-11-r45
+    pullPolicy: Never
+  auth:
+    postgresPassword: labpass123
+    password: labpass123
+    username: myapp
+    database: myapp
+  primary:
+    persistence:
+      enabled: false

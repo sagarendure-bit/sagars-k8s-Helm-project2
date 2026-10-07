@@ -1,0 +1,26 @@
+replicaCount: 3
+image:
+  tag: "1.25-alpine"
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: myapp.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 10
+config:
+  APP_ENV: "prod"
+  LOG_LEVEL: "warn"
+  FEATURE_FLAG: "false"
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
